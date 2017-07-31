@@ -8,7 +8,8 @@ using UnityEngine;
  * Written by Bilal Itani <bilalitani1@gmail.com>, June 2017
  */
 
-public class CameraController : MonoBehaviour {
+public class CameraController : MonoBehaviour
+{
 
     public Transform target;
 
@@ -16,16 +17,18 @@ public class CameraController : MonoBehaviour {
 
     public float zOffset = -19;
 
+    public float yPos = 19;
+
     #region Monobehaviour API
 
-	void LateUpdate ()
+    void LateUpdate()
     {
         var currentPosition = transform.position;
 
-        var targetPosition = new Vector3(target.position.x, currentPosition.y, target.position.z + zOffset);
+        var targetPosition = new Vector3(target.position.x, yPos + target.position.y, target.position.z + zOffset);
 
         transform.position = Vector3.Lerp(currentPosition, targetPosition, Time.deltaTime * lerpSpeed);
-	}
+    }
 
     #endregion
 }
